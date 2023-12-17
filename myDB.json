@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "user": "prakash",
+        "email": "prakash@gmail.com",
+        "password": "password",
+        "confirmPassword": "password",
+        "myGoogleKeepTodo": [
+            {
+                "title": "title",
+                "contents": [
+                    "content1",
+                    "content2",
+                    "content3",
+                    "content4",
+                    "content5"
+                ]
+            }
+        ],
+        "myRichTextEditorTodo": [
+            {
+                "title": "title",
+                "contents": [
+                    "content1",
+                    "content2",
+                    "content3",
+                    "content4",
+                    "content5"
+                ]
+            }
+        ]
+    }
+]

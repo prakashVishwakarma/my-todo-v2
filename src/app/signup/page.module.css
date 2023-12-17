@@ -1,0 +1,44 @@
+.theMainDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40vw;
+  height: 90vh;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 7px 10px 55px rgba(200, 200, 200, 0.516);
+  background-color: #73ff7a98;
+
+}
+
+.innerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40vw;
+  height: 55vh;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90vw;
+    border: 2px solid black;
+  }
+  .innerContainer{
+    width: 90vw;
+  }
+}

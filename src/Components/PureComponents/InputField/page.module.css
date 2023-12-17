@@ -1,0 +1,21 @@
+.InputField{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.InputField > label{
+  margin-bottom: 5px;
+}
+
+.InputField > input{
+  margin-bottom: 25px;
+  border-radius: 20px;
+  border: 1px solid black;
+  height: 40px;
+  border-top: hidden;
+  border-right: hidden;
+  border-left: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+}

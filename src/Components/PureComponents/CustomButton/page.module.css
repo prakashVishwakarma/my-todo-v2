@@ -1,0 +1,11 @@
+.CustomButton{
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  background-color: #00a51c;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.129);
+}
