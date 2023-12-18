@@ -1,16 +1,28 @@
-export const myLocalData = {
+import generateRandomNumber from "@/Utils/generateRandomNumber"
 
-    loginAndSignup: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-    },
-
-    myTodo: [
-
-    ],
-
-
-}
+export const myLocalData = [
+    {
+        "id": generateRandomNumber(),
+        "email": "",
+        "password": "",
+        "confirmPassword": "",
+        "myGoogleKeepTodo": [
+            {
+                "title": "",
+                "contents": [
+                    "",
+                ]
+            }
+        ],
+        "myRichTextEditorTodo": [
+            {
+                "title": "",
+                "contents": [
+                    "",
+                ]
+            }
+        ]
+    }
+]
 
 export const myLocalDataName = 'myLocalData'

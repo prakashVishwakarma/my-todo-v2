@@ -8,40 +8,33 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Typography } from '@mui/material'
 import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
+import getLocalStorageData from '@/Utils/getLocalStorageData'
+import areCredentialsMatching from '@/Utils/areCredentialsMatching'
+
+const isLocalStorageData = getLocalStorageData(myLocalDataName)
 
 const Login = () => {
-  const [signupData, setSignupData] = useState(myLocalData)
+
+  const [signupData, setSignupData] = useState({ email: "", password: "" })
 
   const router = useRouter()
   const jsonString = '{"loginAndSignup":{"email":"","password":"","confirmPassword":""},"myTodo":[{"id":"","title":"","content":""}],"checkConfirmPassword":false}';
   const errorMsg = 'Wrong Email ID or Password';
 
   const handleClickLogin = () => {
-    const myLocalStorageData = JSON.parse(localStorage.getItem(myLocalDataName) ?? jsonString);
 
-    if (myLocalStorageData.loginAndSignup.email !== signupData.loginAndSignup.email) {
-      alert(errorMsg)
-      return
-    }
-    if (myLocalStorageData.loginAndSignup.password !== signupData.loginAndSignup.password) {
-      alert(errorMsg)
-      return
-    }
-    router.push('/')
+    const isCredentialsMatched = areCredentialsMatching(signupData.email, signupData.password)
+
+    if (!signupData.email) return alert('Please Provide Email!')
+    if (!signupData.password) return alert('Please Provide Password!')
+    if (isCredentialsMatched) return router.push('/')
+    else return alert('The Login Details are Incorrect')
   }
 
   const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setSignupData((prev) => {
-      return {
-        ...prev,
-        loginAndSignup: {
-          ...prev.loginAndSignup,
-          [name]: value,
-        },
-      };
-    });
+    setSignupData(prev => ({ ...prev, [name]: value }))
   }
   console.log(signupData)
   return (
@@ -49,8 +42,8 @@ const Login = () => {
       <div className={styles.container}>
         <h1>Log In</h1>
         <div className={styles.innerContainer}>
-          <InputField onChange={handleInputFieldChange} value={signupData.loginAndSignup.email} name='email' type='email' lable='Email' />
-          <InputField onChange={handleInputFieldChange} value={signupData.loginAndSignup.password} name='password' type='password' lable='Password' />
+          <InputField onChange={handleInputFieldChange} name='email' type='email' lable='Email' />
+          <InputField onChange={handleInputFieldChange} name='password' type='password' lable='Password' />
         </div>
         <CustomButton onClick={() => handleClickLogin()} type='submit' name='LOG IN' />
         <Link href={'/signup'}>

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState, useRef, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@/Components/PureComponents/Card/MyCard'
 import styles from './page.module.css'
 import { Box, Grid } from '@mui/material'
@@ -11,7 +11,7 @@ import Link from 'next/link'
 import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
 import { useRouter } from 'next/navigation'
 
-import JoditEditor from 'jodit-react';
+import RichTextEditor from '@/Components/RichTextEditor/RichTextEditor'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,53 +28,89 @@ const Home = () => {
   const router = useRouter()
 
   const handleClickLogOut = () => {
-    localStorage.clear()
-    router.push('/signup')
+    // localStorage.clear()
+    // router.push('/signup')
   }
 
-  const reStoreMyLocalData = () => {
-    const myLocalData = JSON.parse(localStorage.getItem(myLocalDataName) ?? '{}')
-    if (!myLocalData.myTodo) return (router.push('/signup'))
-    setMyTodos(myLocalData.myTodo)
-  }
+  // const reStoreMyLocalData = () => {
+  //   const myLocalData = JSON.parse(localStorage.getItem(myLocalDataName) ?? '{}')
+  //   if (!myLocalData.myTodo) return (router.push('/signup'))
+  //   setMyTodos(myLocalData.myTodo)
+  // }
 
   useEffect(() => {
 
-    reStoreMyLocalData()
+    // reStoreMyLocalData()
 
   }, [])
-  // console.log('myTodo', myTodos)  
 
-  const editor = useRef(null);
-	const [content, setContent] = useState('');
 
-	// const config = useMemo(
-	// 	{
-	// 		readonly: false, // all options from https://xdsoft.net/jodit/docs/,
-	// 		placeholder: placeholder || 'Start typings...'
-	// 	},
-	// 	[placeholder]
-	// );
+  // // Function to generate a random encryption key
+  // function generateEncryptionKey() {
+  //   return window.crypto.subtle.generateKey(
+  //     { name: 'AES-GCM', length: 256 },
+  //     true,
+  //     ['encrypt', 'decrypt']
+  //   );
+  // }
 
-  const htmlContent = '<p>This is <em>HTML</em> content.</p>';
+  // // Function to encrypt and store data in localStorage
+  // async function encryptAndStore(data: { username: string; email: string }) {
+  //   const key = await generateEncryptionKey();
+  //   const iv = window.crypto.getRandomValues(new Uint8Array(12));
+  //   const encryptedData = await window.crypto.subtle.encrypt(
+  //     { name: 'AES-GCM', iv },
+  //     key,
+  //     new TextEncoder().encode(JSON.stringify(data))
+  //   );
+
+  //   const combinedData = new Uint8Array([...iv, ...new Uint8Array(encryptedData)]);
+  //   const encryptedString = btoa(String.fromCharCode(...combinedData));
+  //   localStorage.setItem('encryptedData', encryptedString);
+  // }
+
+  // // Function to retrieve and decrypt data from localStorage
+  // async function retrieveAndDecrypt() {
+  //   const encryptedString = localStorage.getItem('encryptedData');
+  //   if (!encryptedString) {
+  //     return null;
+  //   }
+
+  //   const combinedData = new Uint8Array([...atob(encryptedString)].map(char => char.charCodeAt(0)));
+  //   const iv = combinedData.slice(0, 12);
+  //   const encryptedData = combinedData.slice(12);
+
+  //   const key = await generateEncryptionKey();
+  //   const decryptedData = await window.crypto.subtle.decrypt(
+  //     { name: 'AES-GCM', iv },
+  //     key,
+  //     encryptedData
+  //   );
+
+  //   const decryptedString = new TextDecoder().decode(decryptedData);
+  //   return JSON.parse(decryptedString);
+  // }
+
+  // // Example usage
+  // const dataToEncrypt = { username: 'john_doe', email: 'john@example.com' };
+
+  // // Encrypt and store data
+  // encryptAndStore(dataToEncrypt);
+
+  // // Retrieve and decrypt data
+  // retrieveAndDecrypt().then(decryptedData => {
+  //   console.log('Decrypted Data:', decryptedData);
+  // });
 
   return (
     <>
-    <JoditEditor
-			ref={editor}
-			value={content}
-			// config={config}
-			// tabIndex={1} // tabIndex of textarea
-			onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-			onChange={newContent => {setContent(newContent)}}
-		/>
+      <RichTextEditor />
 
-    {content}{'jkg'}
       <Box className={styles.container} sx={{ mt: '20px' }}>
         <Link href="/create">
           <CustomButton type='button' name='Create' />
         </Link>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
         <CustomButton onClick={handleClickLogOut} type='button' name='Log Out' />
       </Box>
       {
