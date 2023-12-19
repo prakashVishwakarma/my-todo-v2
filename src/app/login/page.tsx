@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import styles from '../signup/page.module.css'
+// import styles from '../signup/page.module.css'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
@@ -36,16 +36,16 @@ const Login = () => {
   }
 
   return (
-    <div className={styles.theMainDiv}>
-      <div className={styles.container}>
+    <div className={'theMainDiv'}>
+      <div className={'container'}>
         <h1>Log In</h1>
-        <div className={styles.innerContainer}>
+        <div className={'innerContainer'}>
           <InputField onChange={handleInputFieldChange} name='email' type='email' lable='Email' />
           <InputField onChange={handleInputFieldChange} name='password' type='password' lable='Password' />
         </div>
         <CustomButton onClick={() => handleClickLogin()} type='submit' name='LOG IN' />
-        <Link href={routes.signup}>
-          <Typography sx={{ color: 'gray', mt: '40px' }} variant="subtitle1" gutterBottom>Don Not Have An Account ?</Typography>
+        <Link className={'link'} href={routes.signup}>
+          <Typography variant="subtitle1" gutterBottom>Don Not Have An Account ?</Typography>
         </Link>
       </div>
     </div>

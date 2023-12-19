@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import styles from './page.module.css'
+// import styles from './page.module.css'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
@@ -87,15 +87,17 @@ const Create = () => {
   }, [])
 
   return (
-    <div className={styles.theMainDiv}>
-      <div className={styles.container}>
+    <div className={'theMainDiv'}>
+      <div className={'container'}>
         <h1>Create</h1>
-        <div className={styles.innerContainer}>
+        <div className={'innerContainer'}>
           <InputField onChange={handleInputFieldChange} name='title' type='text' lable='Title' />
           <InputField onChange={handleInputFieldChange} name='content' type='text' lable='Content' />
         </div>
-        <div>
-          <CustomButton onClick={() => handleClickCreate('Cancel')} type='submit' name='Cancel' />
+        <div style={{ display: 'flex' }}>
+          <div style={{marginRight:'9px'}}>
+            <CustomButton onClick={() => handleClickCreate('Cancel')} type='submit' name='Cancel' />
+          </div>
           <CustomButton onClick={() => handleClickCreate('Create')} type='submit' name='Create' />
         </div>
       </div>

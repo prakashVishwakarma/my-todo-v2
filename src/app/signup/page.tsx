@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import styles from './page.module.css'
+// import styles from './page.module.css'
+import '.././globals.css'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
@@ -61,17 +62,17 @@ const Signup = () => {
 
 
   return (
-    <div className={`${styles.theMainDiv}`}>
-      <div className={`${styles.container} `}>
+    <div className={'theMainDiv'}>
+      <div className={'container'}>
         <h1>Sign Up</h1>
-        <div className={styles.innerContainer}>
+        <div className={'innerContainer'}>
           <InputField onChange={handleInputFieldChange} name='email' type='email' lable='Email' />
           <InputField onChange={handleInputFieldChange} name='password' type='password' lable='Password' />
           <InputField onChange={handleInputFieldChange} name='confirmPassword' type='password' lable='Confirm Password' />
         </div>
         <CustomButton onClick={() => handleClickSignup()} type='submit' name='SIGN UP' />
-        <Link href={routes.login}>
-          <Typography sx={{ color: 'gray', mt: '40px' }} variant="subtitle1" gutterBottom>Already Have An Account ?</Typography>
+        <Link className={'link'} href={routes.login}>
+          <Typography variant="subtitle1" gutterBottom>Already Have An Account ?</Typography>
         </Link>
       </div>
     </div>
