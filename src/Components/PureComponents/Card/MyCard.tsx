@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import CustomButton from '../CustomButton/CustomButton';
 import Link from 'next/link';
 import AlertDialogSlide from '@/Components/AlertDialogSlide/AlertDialogSlide';
+import { routes } from '@/Constants/routes';
 
 interface MyCardPropsObj {
     title: string;
@@ -33,10 +34,10 @@ const MyCard: React.FC<MyCardProps> = ({ value, index, reStoreMyLocalData }) => 
             </CardContent>
             <CardActions>
                 <AlertDialogSlide valueData={value} text={'View'} Cancel={'Close'} Done={'Done'} />
-                <Link href={`/update/${index}`}>
+                <Link href={routes.update(index)}>
                     <CustomButton type='button' name='Update' />
                 </Link>
-                <AlertDialogSlide  valueData={value} text={'Delete'} Cancel={'Cancel'} Done={'Done'} title={'Are You Sure You Want To Delete ?'} />
+                <AlertDialogSlide valueData={value} text={'Delete'} Cancel={'Cancel'} Done={'Done'} title={'Are You Sure You Want To Delete ?'} />
             </CardActions>
         </Card>
     )

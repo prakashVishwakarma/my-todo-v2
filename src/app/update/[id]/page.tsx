@@ -99,7 +99,7 @@ const Updatetodo = () => {
         // alert('sjdf')
         // console.log('myLocalData',myLocalData)
     }, [params.id])
-    console.log(todoObj)
+    
     return (
 
         <div className={styles.theMainDiv}>

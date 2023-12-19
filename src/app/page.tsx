@@ -12,6 +12,7 @@ import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
 import { useRouter } from 'next/navigation'
 
 import RichTextEditor from '@/Components/RichTextEditor/RichTextEditor'
+import { routes } from '@/Constants/routes'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -107,7 +108,7 @@ const Home = () => {
       <RichTextEditor />
 
       <Box className={styles.container} sx={{ mt: '20px' }}>
-        <Link href="/create">
+        <Link href={routes.create}>
           <CustomButton type='button' name='Create' />
         </Link>
         {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}

@@ -12,8 +12,11 @@ import useModifyLocalStorage from '@/Hooks/useModifyLocalStorage'
 import isEmailExists from '@/Utils/isEmailExists'
 import modifyLocalStorageData from '@/Utils/modifyLocalStorageData'
 import getLocalStorageData from '@/Utils/getLocalStorageData'
-import { myLocalDataName } from '@/Constants/myLocalData'
+import { encryptionDataStrengths, myLocalDataName } from '@/Constants/myLocalData'
 import generateRandomNumber from '@/Utils/generateRandomNumber'
+import encrypt from '@/Utils/encryptions/encryptData'
+import decrypt from '@/Utils/encryptions/decryptData'
+import { routes } from '@/Constants/routes'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,9 +28,15 @@ const Signup = () => {
 
   const handleClickSignup = () => {
 
+    const mySignupData = {
+      email: signupData.email,
+      password: encrypt(signupData.password, encryptionDataStrengths),
+      confirmPassword: encrypt(signupData.confirmPassword, encryptionDataStrengths),
+      id: generateRandomNumber()
+    }
     const isValidEmail = emailRegex.test(signupData?.email);
     const isEmail = isEmailExists(signupData?.email)
-    const modifiedLocalStorageData = modifyLocalStorageData({ ...signupData, id: generateRandomNumber(), })
+    const modifiedLocalStorageData = modifyLocalStorageData(mySignupData)
     const isLocalStorageData = getLocalStorageData(myLocalDataName)
 
     if (!isValidEmail) return alert('Envalid Email!')
@@ -36,10 +45,10 @@ const Signup = () => {
     if (signupData.password !== signupData.confirmPassword) return alert('Confirm Password Is Not Matching!')
     if (isLocalStorageData) {
       localStorage.setItem(myLocalDataName, JSON.stringify([modifiedLocalStorageData, ...isLocalStorageData]))
-      router.push('/login')
+      router.push(routes.login)
     } else {
       localStorage.setItem(myLocalDataName, JSON.stringify([modifiedLocalStorageData]))
-      router.push('/login')
+      router.push(routes.login)
     }
   }
 
@@ -52,8 +61,8 @@ const Signup = () => {
 
 
   return (
-    <div className={styles.theMainDiv}>
-      <div className={styles.container}>
+    <div className={`${styles.theMainDiv}`}>
+      <div className={`${styles.container} `}>
         <h1>Sign Up</h1>
         <div className={styles.innerContainer}>
           <InputField onChange={handleInputFieldChange} name='email' type='email' lable='Email' />
@@ -61,7 +70,7 @@ const Signup = () => {
           <InputField onChange={handleInputFieldChange} name='confirmPassword' type='password' lable='Confirm Password' />
         </div>
         <CustomButton onClick={() => handleClickSignup()} type='submit' name='SIGN UP' />
-        <Link href={'/login'}>
+        <Link href={routes.login}>
           <Typography sx={{ color: 'gray', mt: '40px' }} variant="subtitle1" gutterBottom>Already Have An Account ?</Typography>
         </Link>
       </div>

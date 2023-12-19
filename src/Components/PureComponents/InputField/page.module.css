@@ -1,15 +1,20 @@
-.InputField{
+.InputField {
   display: flex;
   flex-direction: column;
   width: 90%;
 }
 
-.InputField > label{
+.InputField>label {
+  color: gray;
   margin-bottom: 5px;
+  font-size: large;
+  font-weight: bold;
 }
 
-.InputField > input{
+.InputField>input {
   margin-bottom: 25px;
+  margin-top: 15px;
+  /* 
   border-radius: 20px;
   border: 1px solid black;
   height: 40px;
@@ -17,5 +22,32 @@
   border-right: hidden;
   border-left: hidden;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 20px; */
+
+/* width: 60%; */
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #e8e8e8;
+  box-shadow: 10px 10px 10px #c5c5c5,
+    -10px -10px 20px #ffffff;
+  transition: 0.3s;
+
+
+}
+
+.InputField>input:focus {
+  outline-color: #e8e8e8;
+  background: #e8e8e8;
+  box-shadow: inset 20px 20px 60px #c5c5c5,
+    inset -20px -20px 60px #ffffff;
+  transition: 0.3s;
+}
+
+.InputField>input:hover {
+  outline-color: #e8e8e8;
+  background: #e8e8e8;
+  box-shadow: inset 20px 20px 60px #c5c5c5,
+    inset -20px -20px 60px #ffffff;
+  transition: 0.3s;
 }

@@ -8,21 +8,30 @@ export const myLocalData = [
         "confirmPassword": "",
         "myGoogleKeepTodo": [
             {
+                "id": generateRandomNumber(),
                 "title": "",
                 "contents": [
-                    "",
+                    {
+                        "id": generateRandomNumber(),
+                        "content": "",
+                    },
                 ]
             }
         ],
         "myRichTextEditorTodo": [
             {
+                "id": generateRandomNumber(),
                 "title": "",
                 "contents": [
-                    "",
+                    {
+                        "id": generateRandomNumber(), 
+                        "content": "",
+                    },
                 ]
             }
         ]
     }
-]
+];
 
-export const myLocalDataName = 'myLocalData'
+export const myLocalDataName = 'myLocalData';
+export const encryptionDataStrengths = 3;

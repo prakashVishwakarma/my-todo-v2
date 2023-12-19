@@ -1,11 +1,13 @@
-.theMainDiv{
+.theMainDiv {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: #e0e0e0;
+  /* background-image: linear-gradient(45deg, #88ff9c 2%, #fffcea 44%, #00d778 99%); */
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,13 +15,32 @@
   width: 40vw;
   height: 90vh;
   border-radius: 10px;
-  border: 1px solid black;
-  box-shadow: 7px 10px 55px rgba(200, 200, 200, 0.516);
-  background-color: #73ff7a98;
-
+  background-color: #73ff7a23;
+  box-shadow:
+    1.5px 0.8px 0.5px rgba(0, 0, 0, 0.278),
+    3.1px 1.8px 1.9px rgba(0, 0, 0, 0.307),
+    5.2px 2.9px 5px rgba(0, 0, 0, 0.302),
+    7.9px 4.5px 11.2px rgba(0, 0, 0, 0.284),
+    12px 6.8px 24.7px rgba(0, 0, 0, 0.265),
+    19.4px 10.9px 47.7px rgba(0, 0, 0, 0.261),
+    62px 35px 68px rgba(0, 0, 0, 0.33);
+  border-radius: 46px;
+  background: #e0e0e0;
+  box-shadow: 7px 7px 18px #bcbcbc,
+    -7px -7px 18px #ffffff;
 }
 
-.innerContainer{
+.container:hover {
+  background-color: #73ff7a6e;
+  background-image: linear-gradient(45deg, #88ff9cce 2%, #fffcea89 44%, #3fffa92d 99%);
+}
+
+.container>h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: gray;
+}
+
+.innerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +51,7 @@
 
 @media only screen and (max-width: 768px) {
 
-  .container{
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +59,8 @@
     width: 90vw;
     border: 2px solid black;
   }
-  .innerContainer{
+
+  .innerContainer {
     width: 90vw;
   }
 }
