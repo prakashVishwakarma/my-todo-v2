@@ -20,7 +20,6 @@ import storeDataInLocalStorage from '@/Utils/storeDataInLocalStorage'
 const Create = () => {
 
   const [todoObj, setTodoObj] = useState<TodoItem>({ id: "", title: "", contents: [{ id: "", content: "" }] })
-  const [counter, setCounter] = useState<number>(0)
   // const [todoArray, setTodoArray] = useState<TodoItem[]>([{
   //   title: '',
   //   content: '',
@@ -33,7 +32,6 @@ const Create = () => {
     setTodoObj((prevTodoObj) => {
 
       if (prevTodoObj.contents[prevTodoObj.contents.length - 1].content) {
-        setCounter(p => p + .5)
         return { ...prevTodoObj, contents: [...prevTodoObj.contents, { id: "", content: "" }] }
       }
       else {
@@ -76,7 +74,7 @@ const Create = () => {
     }
   }
 
-  const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>,i: number) => {
 
     const { name, value } = e.target;
 
@@ -91,7 +89,7 @@ const Create = () => {
 
 
         const updatedContents = [...prevTodoObj.contents];
-        updatedContents[counter].content = value;
+        updatedContents[i].content = value;
         // console.log({ ...prevTodoObj, contents: updatedContents })
 
         return { ...prevTodoObj, contents: updatedContents };
@@ -119,11 +117,11 @@ const Create = () => {
     <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '60px' }}>
       <div style={{ width: '50%', border: '2px solid black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <h1 style={{ textAlign: 'center' }} >Create</h1>
-        <InputField onChange={handleInputFieldChange} name='title' type='text' lable='Title' />
+        <InputField onChange={(e) => handleInputFieldChange(e, 0)} name='title' type='text' lable='Title' />
         {
           todoObj?.contents?.map((value, i, arr) => {
             return (<>
-              <InputField onChange={handleInputFieldChange} name='content' type='text' lable='Content' />
+              <InputField onChange={(e) => handleInputFieldChange(e, i)} name='content' type='text' lable='Content' />
             </>)
           })
         }
