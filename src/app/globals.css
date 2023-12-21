@@ -76,4 +76,8 @@
   .innerContainer {
     width: 90vw;
   }
+
+  /* .HomePageContainer {
+    flex-direction: column;
+  } */
 }

@@ -1,28 +1,21 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-// import styles from './page.module.css'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
 import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
+import { TodoItem } from '@/TypeScriptTypes/TypeScriptTypes'
 
-export interface TodoItem {
-  // id?: string;
-  title: string;
-  content: string;
-}
 
 const Create = () => {
 
   const [todoObj, setTodoObj] = useState<TodoItem>({
-    // id: '',
     title: '',
     content: '',
   })
 
   const [todoArray, setTodoArray] = useState<TodoItem[]>([{
-    // id: '',
     title: '',
     content: '',
   }])
@@ -32,14 +25,10 @@ const Create = () => {
   const handleClickCreate = (buttonType: string) => {
     if (buttonType === 'Create') {
 
-      let tempTodoArray: TodoItem[] = []
-
       if (!todoObj.title) return alert('Please Fill The Title')
       if (!todoObj.content) return alert('Please Fill The Content')
 
       setTodoArray(prev => {
-        // tempTodoArray = [...prev, todoObj]
-        console.log('tempTodoArray', tempTodoArray)
 
         const storedData = localStorage.getItem(myLocalDataName);
         const parsedData = storedData ? JSON.parse(storedData) : {};
@@ -59,31 +48,11 @@ const Create = () => {
   const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setTodoObj((prev) => ({ ...prev, [name]: value }));
-    // console.log({ name, value })
   }
 
   useEffect(() => {
-    const myLocalData = JSON.parse(localStorage.getItem(myLocalDataName) ?? `{
-
-      loginAndSignup: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-      },
-
-      myTodo: [
-        {
-          title: '',
-          content: '',
-        },
-
-      ],
-
-
-    }`)
+    const myLocalData = JSON.parse(localStorage.getItem(myLocalDataName) ?? `{}`)
     setTodoArray(myLocalData.myTodo)
-    // alert('sjdf')
-    // console.log('myLocalData',myLocalData)
   }, [])
 
   return (
@@ -95,7 +64,7 @@ const Create = () => {
           <InputField onChange={handleInputFieldChange} name='content' type='text' lable='Content' />
         </div>
         <div style={{ display: 'flex' }}>
-          <div style={{marginRight:'9px'}}>
+          <div style={{ marginRight: '9px' }}>
             <CustomButton onClick={() => handleClickCreate('Cancel')} type='submit' name='Cancel' />
           </div>
           <CustomButton onClick={() => handleClickCreate('Create')} type='submit' name='Create' />

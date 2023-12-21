@@ -1,19 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-// import styles from '../signup/page.module.css'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Typography } from '@mui/material'
-import { encryptionDataStrengths, myLocalData, myLocalDataName } from '@/Constants/myLocalData'
-import getLocalStorageData from '@/Utils/getLocalStorageData'
+import { encryptionDataStrengths, whoIsLoggedIn } from '@/Constants/myLocalData'
 import areCredentialsMatching from '@/Utils/areCredentialsMatching'
 import encrypt from '@/Utils/encryptions/encryptData'
 import { routes } from '@/Constants/routes'
+import storeDataInSessionStorage from '@/Utils/storeDataInSessionStorage'
 
-const isLocalStorageData = getLocalStorageData(myLocalDataName)
 
 const Login = () => {
 
@@ -23,10 +21,10 @@ const Login = () => {
 
   const handleClickLogin = () => {
 
-    const isCredentialsMatched = areCredentialsMatching(signupData?.email, encrypt(signupData?.password, encryptionDataStrengths))
+    const isCredentialsMatched = areCredentialsMatching(signupData?.email, encrypt(signupData?.password, encryptionDataStrengths), true)
     if (!signupData.email) return alert('Please Provide Email!')
     if (!signupData.password) return alert('Please Provide Password!')
-    if (isCredentialsMatched) return router.push(routes.home)
+    if (isCredentialsMatched) if (storeDataInSessionStorage(whoIsLoggedIn, signupData)) return router.push(routes.home)
     else return alert('The Login Details are Incorrect')
   }
 

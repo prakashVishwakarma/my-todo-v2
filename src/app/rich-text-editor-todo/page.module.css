@@ -1,19 +1,20 @@
-/* .container {
+.container {
   display: flex;
   justify-content: center;
-  width: 100%; */
-/* } */
+  width: 100%;
 
-/* .HomePageContainer {
-  flex-direction:column;
+}
+
+.HomePageContainer {
+  flex-direction: column;
   background-color: #ff2e2e;
   display: 'flex';
   flex-direction: column;
   justify-content: 'center';
   width: '1%';
   height: '11100px';
-} */
-/* 
+}
+
 .threeDLayout {
   display: 'flex';
   justify-content: 'center';
@@ -26,4 +27,4 @@
   display: flex;
   justify-content: center;
   width: 90%;
-} */
+}

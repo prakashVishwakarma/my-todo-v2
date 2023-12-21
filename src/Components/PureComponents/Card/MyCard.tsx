@@ -9,32 +9,34 @@ import CustomButton from '../CustomButton/CustomButton';
 import Link from 'next/link';
 import AlertDialogSlide from '@/Components/AlertDialogSlide/AlertDialogSlide';
 import { routes } from '@/Constants/routes';
+import { Todo } from '@/TypeScriptTypes/TypeScriptTypes';
 
-interface MyCardPropsObj {
-    title: string;
-    content: string;
-}
 interface MyCardProps {
-    value: MyCardPropsObj;
+    value: Todo;
     index: number;
-    reStoreMyLocalData?: () => void;
 }
 
-const MyCard: React.FC<MyCardProps> = ({ value, index, reStoreMyLocalData }) => {
-    console.log(value)
+const MyCard: React.FC<MyCardProps> = ({ value, index }) => {
+    console.log('value', value)
     return (
         <Card sx={{ maxWidth: 345, bgcolor: '#73ff7a98' }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {value.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {value.content}
-                </Typography>
+                {
+                    value.contents.map((contentValue, i, arr) => {
+                        return <>
+                            <Typography sx={{mb:'20px'}} variant="body2" color="text.secondary">
+                                {contentValue.content}
+                            </Typography>
+                        </>
+                    })
+                }
             </CardContent>
             <CardActions>
                 <AlertDialogSlide valueData={value} text={'View'} Cancel={'Close'} Done={'Done'} />
-                <Link href={routes.update(index)}>
+                <Link href={routes.update(value.id)}>
                     <CustomButton type='button' name='Update' />
                 </Link>
                 <AlertDialogSlide valueData={value} text={'Delete'} Cancel={'Cancel'} Done={'Done'} title={'Are You Sure You Want To Delete ?'} />

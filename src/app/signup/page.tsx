@@ -1,22 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-// import styles from './page.module.css'
-import '.././globals.css'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Box, Typography } from '@mui/material'
-import useLocalStorage from '@/Hooks/useLocalStorage'
-import useModifyLocalStorage from '@/Hooks/useModifyLocalStorage'
+import { Typography } from '@mui/material'
 import isEmailExists from '@/Utils/isEmailExists'
 import modifyLocalStorageData from '@/Utils/modifyLocalStorageData'
 import getLocalStorageData from '@/Utils/getLocalStorageData'
 import { encryptionDataStrengths, myLocalDataName } from '@/Constants/myLocalData'
 import generateRandomNumber from '@/Utils/generateRandomNumber'
 import encrypt from '@/Utils/encryptions/encryptData'
-import decrypt from '@/Utils/encryptions/decryptData'
 import { routes } from '@/Constants/routes'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,7 +20,6 @@ const Signup = () => {
 
   const [signupData, setSignupData] = useState({ email: "", password: "", confirmPassword: "", })
   const router = useRouter()
-
 
   const handleClickSignup = () => {
 
@@ -59,7 +53,6 @@ const Signup = () => {
 
     setSignupData(prev => ({ ...prev, [name]: value }))
   }
-
 
   return (
     <div className={'theMainDiv'}>

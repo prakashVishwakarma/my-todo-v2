@@ -6,13 +6,16 @@ import styles from './page.module.css'
 import { Box, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import Link from 'next/link'
-import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
 import { useRouter } from 'next/navigation'
+
+import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
+import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
 
 import RichTextEditor from '@/Components/RichTextEditor/RichTextEditor'
 import { routes } from '@/Constants/routes'
+import My3dCard from '@/Components/My3dCard/My3dCard'
+import HoverCard from '@/Components/HoverCard/HoverCard'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -45,76 +48,36 @@ const Home = () => {
 
   }, [])
 
-
-  // // Function to generate a random encryption key
-  // function generateEncryptionKey() {
-  //   return window.crypto.subtle.generateKey(
-  //     { name: 'AES-GCM', length: 256 },
-  //     true,
-  //     ['encrypt', 'decrypt']
-  //   );
-  // }
-
-  // // Function to encrypt and store data in localStorage
-  // async function encryptAndStore(data: { username: string; email: string }) {
-  //   const key = await generateEncryptionKey();
-  //   const iv = window.crypto.getRandomValues(new Uint8Array(12));
-  //   const encryptedData = await window.crypto.subtle.encrypt(
-  //     { name: 'AES-GCM', iv },
-  //     key,
-  //     new TextEncoder().encode(JSON.stringify(data))
-  //   );
-
-  //   const combinedData = new Uint8Array([...iv, ...new Uint8Array(encryptedData)]);
-  //   const encryptedString = btoa(String.fromCharCode(...combinedData));
-  //   localStorage.setItem('encryptedData', encryptedString);
-  // }
-
-  // // Function to retrieve and decrypt data from localStorage
-  // async function retrieveAndDecrypt() {
-  //   const encryptedString = localStorage.getItem('encryptedData');
-  //   if (!encryptedString) {
-  //     return null;
-  //   }
-
-  //   const combinedData = new Uint8Array([...atob(encryptedString)].map(char => char.charCodeAt(0)));
-  //   const iv = combinedData.slice(0, 12);
-  //   const encryptedData = combinedData.slice(12);
-
-  //   const key = await generateEncryptionKey();
-  //   const decryptedData = await window.crypto.subtle.decrypt(
-  //     { name: 'AES-GCM', iv },
-  //     key,
-  //     encryptedData
-  //   );
-
-  //   const decryptedString = new TextDecoder().decode(decryptedData);
-  //   return JSON.parse(decryptedString);
-  // }
-
-  // // Example usage
-  // const dataToEncrypt = { username: 'john_doe', email: 'john@example.com' };
-
-  // // Encrypt and store data
-  // encryptAndStore(dataToEncrypt);
-
-  // // Retrieve and decrypt data
-  // retrieveAndDecrypt().then(decryptedData => {
-  //   console.log('Decrypted Data:', decryptedData);
-  // });
-
   return (
     <>
-      <RichTextEditor />
+      <HoverCard />
+      <div className={styles.HomePageContainer} style={{ display: 'flex', justifyContent: 'center', width: '100%', height: '100vh' }}>
+        <div style={{ width: '90%', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }} >
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }} >
+            <Link href={routes.googleKeepTodo.home} style={{ textDecoration: 'none' }}>
+              <My3dCard />
+            </Link>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center' }} >
+            <Link href={routes.richTextEditor.home} style={{ textDecoration: 'none' }}>
+              <My3dCard />
+            </Link>
+          </div>
+        </div>
+      </div>
 
-      <Box className={styles.container} sx={{ mt: '20px' }}>
-        <Link href={routes.create}>
+
+      {/* <My3dCard /> */}
+      {/* <RichTextEditor /> */}
+
+      {/* <Box className={styles.container} sx={{ mt: '20px' }}>
+        <Link href={routes.googleKeepTodo.create}>
           <CustomButton type='button' name='Create' />
         </Link>
-        {/* <div dangerouslySetInnerHTML={{ __html: content }} /> */}
+        <div dangerouslySetInnerHTML={{ __html: content }} />
         <CustomButton onClick={handleClickLogOut} type='button' name='Log Out' />
-      </Box>
-      {
+      </Box> */}
+      {/* {
         myTodos.length > 0 ?
           <div className={styles.container}>
             <div className={styles.innerContainer}>
@@ -134,7 +97,7 @@ const Home = () => {
             <h1>Please Create a Todo</h1>
             <h3>Your Todo is Empty</h3>
           </>
-      }
+      } */}
     </>
   )
 }
