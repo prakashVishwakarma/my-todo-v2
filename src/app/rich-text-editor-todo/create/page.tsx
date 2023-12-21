@@ -10,12 +10,12 @@ import { TodoItem } from '@/TypeScriptTypes/TypeScriptTypes'
 
 const Create = () => {
 
-  const [todoObj, setTodoObj] = useState<TodoItem>({
+  const [todoObj, setTodoObj] = useState({
     title: '',
     content: '',
   })
 
-  const [todoArray, setTodoArray] = useState<TodoItem[]>([{
+  const [todoArray, setTodoArray] = useState([{
     title: '',
     content: '',
   }])
