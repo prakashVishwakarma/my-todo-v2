@@ -24,8 +24,11 @@ const Login = () => {
     const isCredentialsMatched = areCredentialsMatching(signupData?.email, encrypt(signupData?.password, encryptionDataStrengths), true)
     if (!signupData.email) return alert('Please Provide Email!')
     if (!signupData.password) return alert('Please Provide Password!')
-    if (isCredentialsMatched) if (storeDataInSessionStorage(whoIsLoggedIn, signupData)) return router.push(routes.home)
-    else return alert('The Login Details are Incorrect')
+    if (isCredentialsMatched) {
+      if (storeDataInSessionStorage(whoIsLoggedIn, signupData)) return router.push(routes.home)
+    } else {
+      alert('The Login Details are Incorrect');
+    }
   }
 
   const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
