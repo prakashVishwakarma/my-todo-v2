@@ -44,3 +44,8 @@ export interface MyLocalDataINTERFACE {
   myGoogleKeepTodo: Todo[];
   myRichTextEditorTodo: Todo[];
 }
+
+export type idNcontent = {
+  id: string; 
+  content?: string;
+}

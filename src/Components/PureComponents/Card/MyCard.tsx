@@ -17,7 +17,7 @@ interface MyCardProps {
 }
 
 const MyCard: React.FC<MyCardProps> = ({ value, index }) => {
-    console.log('value', value)
+    console.log('index', index)
     return (
         <Card sx={{ maxWidth: 345, bgcolor: '#73ff7a98' }}>
             <CardContent>
@@ -27,7 +27,7 @@ const MyCard: React.FC<MyCardProps> = ({ value, index }) => {
                 {
                     value.contents.map((contentValue, i, arr) => {
                         return <>
-                            <Typography sx={{mb:'20px'}} variant="body2" color="text.secondary">
+                            <Typography sx={{ mb: '20px' }} variant="body2" color="text.secondary">
                                 {contentValue.content}
                             </Typography>
                         </>
@@ -36,7 +36,7 @@ const MyCard: React.FC<MyCardProps> = ({ value, index }) => {
             </CardContent>
             <CardActions>
                 <AlertDialogSlide valueData={value} text={'View'} Cancel={'Close'} Done={'Done'} />
-                <Link href={routes.update(value.id)}>
+                <Link href={routes.update(`${value.id}?index=${index}`)}>
                     <CustomButton type='button' name='Update' />
                 </Link>
                 <AlertDialogSlide valueData={value} text={'Delete'} Cancel={'Cancel'} Done={'Done'} title={'Are You Sure You Want To Delete ?'} />

@@ -20,6 +20,7 @@ import storeDataInLocalStorage from '@/Utils/storeDataInLocalStorage'
 const Create = () => {
 
   const [todoObj, setTodoObj] = useState<TodoItem>({ id: "", title: "", contents: [{ id: "", content: "" }] })
+  const [counter, setCounter] = useState<number>(0)
   // const [todoArray, setTodoArray] = useState<TodoItem[]>([{
   //   title: '',
   //   content: '',
@@ -32,6 +33,7 @@ const Create = () => {
     setTodoObj((prevTodoObj) => {
 
       if (prevTodoObj.contents[prevTodoObj.contents.length - 1].content) {
+        // setCounter(p => p + .5)
         return { ...prevTodoObj, contents: [...prevTodoObj.contents, { id: "", content: "" }] }
       }
       else {
@@ -55,6 +57,7 @@ const Create = () => {
 
       // adding new todo the user who is created
       theUserWhoIsLoggedIn.myGoogleKeepTodo.push(ModifyTodoData(todoObj.title, todoObj.contents))
+      
       // deleteObjectById() becouse modify locale storage data is not possible
       if (storeDataInLocalStorage(myLocalDataName, [modifyLocalStorageData(theUserWhoIsLoggedIn), ...deleteObjectById(getLocalStorageData(myLocalDataName), theUserWhoIsLoggedIn.id)])) {
 
@@ -74,7 +77,7 @@ const Create = () => {
     }
   }
 
-  const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>,i: number) => {
+  const handleInputFieldChange = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
 
     const { name, value } = e.target;
 

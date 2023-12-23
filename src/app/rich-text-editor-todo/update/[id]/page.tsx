@@ -11,12 +11,12 @@ import { TodoItem } from '@/TypeScriptTypes/TypeScriptTypes'
 
 const Updatetodo = () => {
 
-    const [todoObj, setTodoObj] = useState({
+    const [todoObj, setTodoObj] = useState<TodoItem>({
         title: '',
         content: '',
     })
 
-    const [todoArray, setTodoArray] = useState([{
+    const [todoArray, setTodoArray] = useState<TodoItem[]>([{
         // id: '',
         title: '',
         content: '',
