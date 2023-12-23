@@ -5,17 +5,16 @@ import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
 import { myLocalData, myLocalDataName } from '@/Constants/myLocalData'
-import { TodoItem } from '@/TypeScriptTypes/TypeScriptTypes'
 
 
 const Create = () => {
 
-  const [todoObj, setTodoObj] = useState<TodoItem>({
+  const [todoObj, setTodoObj] = useState({
     title: '',
     content: '',
   })
 
-  const [todoArray, setTodoArray] = useState<TodoItem[]>([{
+  const [todoArray, setTodoArray] = useState([{
     title: '',
     content: '',
   }])
