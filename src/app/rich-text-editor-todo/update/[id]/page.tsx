@@ -7,16 +7,15 @@ import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter, useParams } from 'next/navigation'
 import { myLocalDataName } from '@/Constants/myLocalData'
-import { TodoItem } from '@/TypeScriptTypes/TypeScriptTypes'
 
 const Updatetodo = () => {
 
-    const [todoObj, setTodoObj] = useState<TodoItem>({
+    const [todoObj, setTodoObj] = useState({
         title: '',
         content: '',
     })
 
-    const [todoArray, setTodoArray] = useState<TodoItem[]>([{
+    const [todoArray, setTodoArray] = useState([{
         // id: '',
         title: '',
         content: '',
