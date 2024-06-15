@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from './My3dCard.module.css'
+import { My3dCardProps } from '@/TypeScriptTypes/TypeScriptTypes'
 
-const My3dCard = () => {
+
+const My3dCard: React.FC<My3dCardProps> = ({ title, tagLine }) => {
     return (
         <div className={styles.parent}>
             <div className={styles.card}>
@@ -21,8 +23,8 @@ const My3dCard = () => {
                 </div>
                 <div className={styles.glass}></div>
                 <div className={styles.content}>
-                    <span className={styles.title}>MY GOOGLE KEEP TODOS</span>
-                    <span className={styles.text}>&quot;Stay organized, seize the day: Google Keep Todos _ Your thoughts, your tasks, your way.&quot;</span>
+                    <span className={styles.title}>{title}</span>
+                    <span className={styles.text}>{tagLine}&quot;</span>
                 </div>
                 <div className={styles.bottom}>
 

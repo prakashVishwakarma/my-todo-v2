@@ -36,3 +36,4 @@ export const myLocalData = [
 export const myLocalDataName = 'myLocalData';
 export const encryptionDataStrengths = 3;
 export const whoIsLoggedIn = 'whoIsLoggedIn';
+export const myRichTextEditorData = 'myRichTextEditorData';

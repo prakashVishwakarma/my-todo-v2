@@ -46,6 +46,11 @@ export interface MyLocalDataINTERFACE {
 }
 
 export type idNcontent = {
-  id: string; 
+  id: string;
   content?: string;
+}
+
+export interface My3dCardProps {
+  title: String;
+  tagLine: String;
 }
