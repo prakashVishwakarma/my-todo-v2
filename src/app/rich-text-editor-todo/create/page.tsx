@@ -4,26 +4,28 @@ import React, { useEffect, useState } from 'react'
 import InputField from '@/Components/PureComponents/InputField/InputField'
 import CustomButton from '@/Components/PureComponents/CustomButton/CustomButton'
 import { useRouter } from 'next/navigation'
-import { myLocalData, myLocalDataName, myRichTextEditorData } from '@/Constants/myLocalData'
+import { encryptionDataStrengths, myLocalData, myLocalDataName, myRichTextEditorData, whoIsLoggedIn } from '@/Constants/myLocalData'
 import RichTextEditor from '@/Components/RichTextEditor/RichTextEditor'
 import getDataFromSessionStorage from '@/Utils/getDataFromSessionStorage'
+import { routes } from '@/Constants/routes'
+import getLocalStorageData from '@/Utils/getLocalStorageData'
+import areCredentialsMatching from '@/Utils/areCredentialsMatching'
+import encrypt from '@/Utils/encryptions/encryptData'
+import router from 'next/router'
+import ModifyTodoData from '@/Utils/ModifyTodoData'
+import deleteObjectById from '@/Utils/deleteObjectById'
+import modifyLocalStorageData from '@/Utils/modifyLocalStorageData'
+import storeDataInLocalStorage from '@/Utils/storeDataInLocalStorage'
 
 
 const Create = () => {
 
-  const [data, setData] = useState('')
-
-  useEffect(() => {
-
-    if (!getDataFromSessionStorage(myRichTextEditorData).success) return
-    setData(getDataFromSessionStorage(myRichTextEditorData).data)
-
-  }, [])
+  const route = useRouter()
 
   return (
     < >
-      <RichTextEditor data={data} />
-      <div dangerouslySetInnerHTML={{ __html: data }} />
+      <RichTextEditor />
+      {/* <div dangerouslySetInnerHTML={{ __html: data }} /> */}
     </>
   )
 }

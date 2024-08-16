@@ -18,17 +18,17 @@ export const myLocalData = [
                 ]
             }
         ],
-        "myRichTextEditorTodo": [
-            {
-                "id": generateRandomNumber(),
-                "title": "",
-                "contents": [
-                    {
-                        "id": generateRandomNumber(), 
-                        "content": "",
-                    },
-                ]
-            }
+        "myRichTextEditorTodo": [''
+            // {
+            //     "id": generateRandomNumber(),
+            //     "title": "",
+            //     "contents": [
+            //         {
+            //             "id": generateRandomNumber(), 
+            //             "content": "",
+            //         },
+            //     ]
+            // }
         ]
     }
 ];
